@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Flixy Sport
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="matchSelected" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="upcoming">
+      Upcoming
+    </ion-segment-button>
+    <ion-segment-button value="live">
+      Live
+    </ion-segment-button>
+    <ion-segment-button value="completed">
+      Completed
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="matchSelected">
+    <div *ngSwitchCase="'upcoming'">
+      <ion-card *ngFor="let match of matchList">
+        <div class="header-item">
+          <p class="match-head">{{match.season}}</p>
+          <p class="match-sub"> {{match.season}} {{match.relatedName}}</p>
+        </div>
+
+        <div class="team-content">
+          <div class="teama">
+            <img style="height:90%;width:30%;" src="./assets/imgs/cricket.svg"> &nbsp; {{match.teams.a.shortName}}
+          </div>
+          <div class="teamb">
+             {{match.teams.b.shortName}}&nbsp;
+            <img style="height:90%;width:30%;" src="./assets/imgs/cricket-b.svg">
+          </div>
+        </div>
+      </ion-card>
+    </div>
+    <div *ngSwitchCase="'live'">
+        <ion-card *ngFor="let match of matchList">
+            <div class="header-item">
+              <p class="match-head">{{match.season}}</p>
+              <p class="match-sub"> {{match.season}} {{match.relatedName}}</p>
+            </div>
+    
+            <div class="team-content">
+              <div class="teama">
+                <img style="height:90%;width:30%;" src="./assets/imgs/cricket.svg"> &nbsp; {{match.teams.a.shortName}}
+              </div>
+              <div class="teamb">
+                 {{match.teams.b.shortName}}&nbsp;
+                <img style="height:90%;width:30%;" src="./assets/imgs/cricket-b.svg">
+              </div>
+            </div>
+          </ion-card>
+    </div>
+    <div *ngSwitchCase="'completed'">
+        <ion-card *ngFor="let match of matchList">
+            <div class="header-item">
+              <p class="match-head">{{match.season}}</p>
+              <p class="match-sub"> {{match.season}} {{match.relatedName}}</p>
+            </div>
+    
+            <div class="team-content">
+              <div class="teama">
+                <img style="height:90%;width:30%;" src="./assets/imgs/cricket.svg"> &nbsp; {{match.teams.a.shortName}}
+              </div>
+              <div class="teamb">
+                 {{match.teams.b.shortName}}&nbsp;
+                <img style="height:90%;width:30%;" src="./assets/imgs/cricket-b.svg">
+              </div>
+            </div>
+          </ion-card>
+    </div>
+
+  </div>
+
+
+
+
+</ion-content>
